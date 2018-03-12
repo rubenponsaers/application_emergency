@@ -96,7 +96,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
          * @param listIndex De positie van het item in de lijst
          */
         void bind (int listIndex){
-            listItemNumberView.setText("Bericht " + String.valueOf(listIndex));
+            listItemNumberView.setText("Datum bericht " + String.valueOf(listIndex));
         }
     }
 }
