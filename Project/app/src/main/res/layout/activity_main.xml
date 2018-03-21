@@ -4,15 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorStartscherm"
+    android:background="@color/colorMainActivity"
     android:orientation="vertical"
-    tools:context=".MainActivity_Startscherm">
+    tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button_berichtenGeschiedenis"
+        android:id="@+id/button_messageHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/berichtenGeschiedenis" />
+        android:text="@string/messageHistory_button" />
+
+    <Button
+        android:id="@+id/button_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/help_button"
+        android:textColor="@android:color/white" />
+
+
 </LinearLayout>
 
 

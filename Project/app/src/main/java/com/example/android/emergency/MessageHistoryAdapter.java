@@ -12,16 +12,16 @@ import android.widget.TextView;
  * Created by Ruben on 7/03/2018.
  */
 
-public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHolder> {
+public class MessageHistoryAdapter extends RecyclerView.Adapter<MessageHistoryAdapter.MessageHistoryViewHolder> {
     private int mNumberItems;
-    private static final String TAG = GreenAdapter.class.getSimpleName();
+    private static final String TAG = MessageHistoryAdapter.class.getSimpleName();
 
     /**
-     * Constructor voor een GreenAdapter die een aantal items accepteert om weer te geven
+     * Constructor voor een MessageHistoryAdapter die een aantal items accepteert om weer te geven
      *
      * @param numberItems Het aantal items die weergegeven moeten worden in de lijst
      */
-    public GreenAdapter(int numberItems){
+    public MessageHistoryAdapter(int numberItems){
         mNumberItems = numberItems;
     }
 
@@ -38,14 +38,14 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
      * @return A new NumberViewHolder that holds the View for each list item
      */
     @Override
-    public NumberViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MessageHistoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        int layoutForListItem = R.layout.berichten_lijst_item;
+        int layoutForListItem = R.layout.messagehistory_list_item;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 
         View view = inflater.inflate(layoutForListItem,parent,shouldAttachToParentImmediately);
-        NumberViewHolder viewHolder = new NumberViewHolder(view);
+        MessageHistoryViewHolder viewHolder = new MessageHistoryViewHolder(view);
 
         return viewHolder;
     }
@@ -57,8 +57,8 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
      * @param position De postitie van het item
      */
     @Override
-    public void onBindViewHolder(NumberViewHolder holder, int position) {
-        Log.d(TAG, "Bericht#" + position);
+    public void onBindViewHolder(MessageHistoryViewHolder holder, int position) {
+        Log.d(TAG, "Message#" + position);
         holder.bind(position);
     }
 
@@ -75,8 +75,8 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
     /**
      * Cache voor de children van de recyclerview voor een lijst item/bericht
      */
-    class NumberViewHolder extends RecyclerView.ViewHolder{
-        TextView listItemNumberView;
+    class MessageHistoryViewHolder extends RecyclerView.ViewHolder{
+        TextView listMessageView;
 
         /**
          * Constructor voor de viewHolder. Binnen deze constructor krijgen we een referentie naar onze
@@ -84,10 +84,10 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
          *
          * @param itemView De view die we nodig hebben
          */
-        public NumberViewHolder(View itemView){
+        public MessageHistoryViewHolder(View itemView){
             super(itemView);
 
-            listItemNumberView = (TextView) itemView.findViewById(R.id.textview_bericht_item);
+            listMessageView = (TextView) itemView.findViewById(R.id.textview_message_item);
         }
 
         /**
@@ -96,7 +96,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
          * @param listIndex De positie van het item in de lijst
          */
         void bind (int listIndex){
-            listItemNumberView.setText("Datum bericht " + String.valueOf(listIndex));
+            listMessageView.setText("Date: " + String.valueOf(listIndex));
         }
     }
 }

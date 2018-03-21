@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Emergency</string>
-    <string name="berichtenGeschiedenis">Berichten geschiedenis</string>
+    <string name="messageHistory_button">Message history</string>
+    <string name="help_button">Help</string>
 </resources>

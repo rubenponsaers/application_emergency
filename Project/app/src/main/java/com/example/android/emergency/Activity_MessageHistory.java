@@ -5,24 +5,24 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-public class ChildActivity_BerichtenGeschiedenis extends AppCompatActivity {
+public class Activity_MessageHistory extends AppCompatActivity {
 
     private static final int NUM_LIST_ITEMS = 100;
-    private GreenAdapter mAdapter;
+    private MessageHistoryAdapter mAdapter;
     private RecyclerView mNumbersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_berichten_geschiedenis);
+        setContentView(R.layout.activity_messagehistory);
 
-        mNumbersList = (RecyclerView) findViewById(R.id.recyclerView_berichten);
+        mNumbersList = (RecyclerView) findViewById(R.id.recyclerView_messages);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mNumbersList.setLayoutManager(layoutManager);
         mNumbersList.setHasFixedSize(true);
 
-        mAdapter = new GreenAdapter(NUM_LIST_ITEMS);
+        mAdapter = new MessageHistoryAdapter(NUM_LIST_ITEMS);
         mNumbersList.setAdapter(mAdapter);
     }
 }

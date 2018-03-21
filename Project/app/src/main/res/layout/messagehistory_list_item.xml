@@ -5,7 +5,7 @@
     android:padding="16dp">
     
     <TextView
-        android:id="@+id/textview_bericht_item"
+        android:id="@+id/textview_message_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"

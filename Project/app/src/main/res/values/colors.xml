@@ -2,5 +2,5 @@
 <resources>
     <color name="colorPrimary">#c90000</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorStartscherm">#ffffff</color>
+    <color name="colorMainActivity">#ffffff</color>
 </resources>
