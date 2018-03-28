@@ -9,17 +9,17 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button_messageHistory"
+        android:id="@+id/button_emergencyHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/messageHistory_button" />
+        android:text="@string/emergencyHistory_button" />
 
     <Button
-        android:id="@+id/button_help"
+        android:id="@+id/button_sendEmergency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimary"
-        android:text="@string/help_button"
+        android:text="@string/sendEmergency_button"
         android:textColor="@android:color/white" />
 
 

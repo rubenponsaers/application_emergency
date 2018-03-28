@@ -1,2 +1,0 @@
-ID	Date		Location
-1	21/03/2018	locatie
