@@ -3,5 +3,12 @@
     <string name="emergencyHistory_button">Emergency history</string>
     <string name="sendEmergency_button">Send emergency!</string>
     <string name="settings">Settings</string>
-    <string name="applyDarkTheme_setting">Apply dark theme</string>
+
+    <!-- Preference labels and key names -->
+    <string name="pref_theme_label">Theme</string>
+    <string name="pref_theme_key" translatable="false">theme</string>
+    <string name="pref_theme_Red_label">Red</string>
+    <string name="pref_theme_Red_key" translatable="false">red</string>
+    <string name="pref_theme_Dark_label">Dark</string>
+    <string name="pref_theme_Dark_key" translatable="false">dark</string>
 </resources>

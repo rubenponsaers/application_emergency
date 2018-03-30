@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#c90000</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorMainActivity">#ffffff</color>
+    <color name="colorThemeRed1">#c90000</color>
+    <color name="colorThemeRed2">#ffffff</color>
+    <color name="colorThemeDark1">#000000</color>
+
 </resources>

@@ -2,6 +2,8 @@ package com.example.android.emergency;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -49,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    private void defaultSetup(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    }
+
+    /**
+     * When a menu item is selected, start the activity that belongs to that item
+     * @param item  the item that is selected
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
