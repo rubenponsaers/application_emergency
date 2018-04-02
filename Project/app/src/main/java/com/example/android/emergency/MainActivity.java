@@ -12,10 +12,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private Button emergencyHistory;
     private Button sendEmergency;
+
+    private static boolean PREFERENCES_HAVE_BEEN_UPDATED = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +53,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private void defaultSetup(){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-    }
-
     /**
      * When a menu item is selected, start the activity that belongs to that item
      * @param item  the item that is selected
@@ -63,9 +61,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+
         if (id == R.id.action_settings){
-            Intent startSettings = new Intent(this, SettingsActivity.class);
-            startActivity(startSettings);
+            Intent startSettingsActivity = new Intent(this, SettingsActivity.class);
+            startActivity(startSettingsActivity);
             return true;
         }
 

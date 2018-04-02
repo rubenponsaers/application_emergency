@@ -2,7 +2,7 @@
     <string name="app_name">Emergency</string>
     <string name="emergencyHistory_button">Emergency history</string>
     <string name="sendEmergency_button">Send emergency!</string>
-    <string name="settings">Settings</string>
+    <string name="action_settings">Settings</string>
 
     <!-- Preference labels and key names -->
     <string name="pref_theme_label">Theme</string>
