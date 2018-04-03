@@ -12,16 +12,19 @@
         android:id="@+id/button_emergencyHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/emergencyHistory_button" />
-
+        android:text="@string/button_emergencyHistory" />
     <Button
         android:id="@+id/button_sendEmergency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorThemeRed1"
-        android:text="@string/sendEmergency_button"
+        android:text="@string/button_sendEmergency"
         android:textColor="@color/colorThemeRed2" />
-
+    <Button
+        android:id="@+id/button_contacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_contacts" />
 
 </LinearLayout>
 

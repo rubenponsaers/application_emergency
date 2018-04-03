@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity{
 
     private Button emergencyHistory;
     private Button sendEmergency;
+    private Button contacts;
 
     private static boolean PREFERENCES_HAVE_BEEN_UPDATED = false;
 
@@ -31,8 +32,8 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View view) {
                 Context context = MainActivity.this;
                 Class destinationActivity = EmergencyHistoryActivity.class;
-                Intent startEmergencyHistory = new Intent(context,destinationActivity);
-                startActivity(startEmergencyHistory);
+                Intent startActivity = new Intent(context,destinationActivity);
+                startActivity(startActivity);
             }
         });
 
@@ -43,6 +44,17 @@ public class MainActivity extends AppCompatActivity{
                 Context context = MainActivity.this;
                 Toast messageToast = Toast.makeText(context, "Sending emergency message...", Toast.LENGTH_SHORT);
                 messageToast.show();
+            }
+        });
+
+        contacts = (Button) findViewById(R.id.button_contacts);
+        contacts.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Context context = MainActivity.this;
+                Class destinationActivity = ContactsActivity.class;
+                Intent startActivity = new Intent(context,destinationActivity);
+                startActivity(startActivity);
             }
         });
     }
