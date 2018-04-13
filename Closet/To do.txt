@@ -1,0 +1,2 @@
+Meer preferences toevoegen
+Bij de theme preference een summary geven van welk thema momenteel gebruikt wordt
