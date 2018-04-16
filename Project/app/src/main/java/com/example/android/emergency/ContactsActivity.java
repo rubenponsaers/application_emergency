@@ -32,7 +32,7 @@ public class ContactsActivity extends AppCompatActivity {
     private SQLiteDatabase mDb;
     private EditText mNewContactNameEditText;
     private EditText mNewContactNumberEditText;
-    private final static String LOG_TAG = ContactsActivity.class.getSimpleName();
+    private final static String TAG = ContactsActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +97,6 @@ public class ContactsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //What to show from
     private Cursor getAllGuests() {
         return mDb.query(
                 ContactsContract.ContactsEntry.TABLE_NAME,
@@ -128,7 +127,7 @@ public class ContactsActivity extends AppCompatActivity {
             // TODO(2) Wanneer de nummer 0471... wordt meegegevens krijg je 471.. in de datbase
 
         }catch (Exception ex){
-            Log.e(LOG_TAG, "Failed to parse priority and number:  " + ex.getMessage());
+            Log.e(TAG, "Failed to parse priority and number:  " + ex.getMessage());
         }
 
         addNewContact(priority, mNewContactNameEditText.getText().toString(),number);
@@ -137,8 +136,7 @@ public class ContactsActivity extends AppCompatActivity {
         mNewContactNumberEditText.getText().clear();
     }
 
-    //add contact
-    private long addNewContact(int priority, String name,Long number){
+    public long addNewContact(int priority, String name,Long number){
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(ContactsContract.ContactsEntry.COLUMN_PRIORITY, priority);
@@ -148,7 +146,6 @@ public class ContactsActivity extends AppCompatActivity {
         return mDb.insert(ContactsContract.ContactsEntry.TABLE_NAME,null,contentValues);
     }
 
-    //delete contact
     private boolean removeContact(long id){
         return mDb.delete(ContactsContract.ContactsEntry.TABLE_NAME,ContactsContract.ContactsEntry._ID+ "=" + id,null)>0;
     }

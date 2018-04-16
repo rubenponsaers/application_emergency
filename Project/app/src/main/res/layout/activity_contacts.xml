@@ -18,6 +18,14 @@
             android:layout_gravity="top"
             android:hint="@string/hint_new_contact_name" />
 
+        <EditText
+            android:id="@+id/editText_new_contact_phoneNumber"
+            android:layout_width="290dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start|bottom"
+            android:hint="@string/hint_new_contact_phoneNumber"
+            android:inputType="phone" />
+
         <Button
             android:id="@+id/button_add_existing_contact"
             android:layout_width="50dp"
@@ -37,14 +45,6 @@
             android:onClick="addToContacts"
             android:text="@string/button_new_contact_add"
             android:textSize="15sp" />
-
-        <EditText
-            android:id="@+id/editText_new_contact_phoneNumber"
-            android:layout_width="290dp"
-            android:layout_height="50dp"
-            android:layout_gravity="start|bottom"
-            android:hint="@string/hint_new_contact_phoneNumber"
-            android:inputType="phone" />
     </FrameLayout>
 
     <android.support.v7.widget.RecyclerView

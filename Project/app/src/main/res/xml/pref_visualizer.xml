@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <EditTextPreference
+        android:inputType="text"
+        android:key="@string/pref_ownername_key"
+        android:singleLine="true"
+        android:title="@string/pref_ownername_label"/>
+
+    <EditTextPreference
+        android:inputType="text"
+        android:key="@string/pref_bloodtype_key"
+        android:singleLine="true"
+        android:title="@string/pref_bloodtype_label"/>
+
     <ListPreference
         android:key="@string/pref_theme_key"
         android:title="@string/pref_theme_label"

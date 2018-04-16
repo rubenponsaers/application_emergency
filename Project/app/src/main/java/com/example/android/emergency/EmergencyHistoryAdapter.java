@@ -1,6 +1,7 @@
 package com.example.android.emergency;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,58 +9,50 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.android.emergency.data.ContactsContract;
+import com.example.android.emergency.data.EmergencyHistoryContract;
+
 /**
  * Created by Ruben on 7/03/2018.
  */
 
 public class EmergencyHistoryAdapter extends RecyclerView.Adapter<EmergencyHistoryAdapter.EmergencyHistoryViewHolder> {
-    private int mEmergencyItems;
+    private Cursor mCursor;
+    private Context mContext;
     private static final String TAG = EmergencyHistoryAdapter.class.getSimpleName();
 
-    /**
-     * Constructor voor een EmergencyHistoryAdapter die een aantal items accepteert om weer te geven
-     *
-     * @param numberItems Het aantal items die weergegeven moeten worden in de lijst
-     */
-    public EmergencyHistoryAdapter(int numberItems){
-        mEmergencyItems = numberItems;
+    public EmergencyHistoryAdapter(Context context, Cursor cursor){
+        this.mContext = context;
+        this.mCursor = cursor;
     }
 
-    /**
-     *
-     * Wordt opgeroepen wanneer een nieuwe ViewHolder wordt gecreerd. Dit gebeurt wanneer er door
-     * de RecyclerView wordt gescrold. Er zullen net genoeg viewHolders gemaakt worden zodat het
-     * scherm gevuld is
-     *
-     * @param parent    De viewGroup die deze Viewholder bevat
-     * @param viewType  Als de RecyclerView meer Items heeft kan dit gebruikt worden voor
-     *                  een andere Layout
-     *                  
-     * @return A new NumberViewHolder that holds the View for each list item
-     */
     @Override
     public EmergencyHistoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
         int layoutForListItem = R.layout.emergencyhistory_list_item;
-        LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldAttachToParentImmediately = false;
-
-        View view = inflater.inflate(layoutForListItem,parent,shouldAttachToParentImmediately);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        View view = inflater.inflate(layoutForListItem,parent,false);
         EmergencyHistoryViewHolder viewHolder = new EmergencyHistoryViewHolder(view);
 
         return viewHolder;
     }
 
-    /**
-     * Wordt opgeroepen door de RecyclerView om de data weer te geven die hoort bij die positie
-     *
-     * @param holder   De ViewHolder die geupdate moet worden om de gegeven data weer te geven
-     * @param position De postitie van het item
-     */
     @Override
     public void onBindViewHolder(EmergencyHistoryViewHolder holder, int position) {
         Log.d(TAG, "Emergency#" + position);
-        holder.bind(position);
+
+        if(!mCursor.moveToPosition(position)){
+            return;
+        }
+
+        String date = mCursor.getString(mCursor.getColumnIndex(EmergencyHistoryContract.EmergencyHistoryEntry.COLUMN_DATE));
+        String location = mCursor.getString(mCursor.getColumnIndex(EmergencyHistoryContract.EmergencyHistoryEntry.COLUMN_LOCATION));
+        long id = mCursor.getLong(mCursor.getColumnIndex(EmergencyHistoryContract.EmergencyHistoryEntry._ID));
+
+        holder.dateTextView.setText(date);
+        holder.locationTextView.setText(location);
+        holder.itemView.setTag(id);
+        //TODO(4) !!!!!Adapter eerst afwerken
+
     }
 
     /**
@@ -69,34 +62,22 @@ public class EmergencyHistoryAdapter extends RecyclerView.Adapter<EmergencyHisto
      */
     @Override
     public int getItemCount(){
-        return mEmergencyItems;
+        return mCursor.getCount();
     }
 
     /**
      * Cache voor de children van de recyclerview voor een lijst item/bericht
      */
     class EmergencyHistoryViewHolder extends RecyclerView.ViewHolder{
-        TextView listEmergencyView;
+        TextView dateTextView;
+        TextView locationTextView;
 
-        /**
-         * Constructor voor de viewHolder. Binnen deze constructor krijgen we een referentie naar onze
-         * TextViews in de lijst
-         *
-         * @param itemView De view die we nodig hebben
-         */
+
         public EmergencyHistoryViewHolder(View itemView){
             super(itemView);
 
-            listEmergencyView = (TextView) itemView.findViewById(R.id.textview_message_item);
-        }
-
-        /**
-         * Methode die de tekst instelt van het weergegeven item
-         *
-         * @param listIndex De positie van het item in de lijst
-         */
-        void bind (int listIndex){
-            listEmergencyView.setText("Date: " + String.valueOf(listIndex));
+            dateTextView = (TextView) itemView.findViewById(R.id.textview_emergencyhistory_date);
+            locationTextView = (TextView) itemView.findViewById(R.id.textview_emergencyhistory_location);
         }
     }
 }

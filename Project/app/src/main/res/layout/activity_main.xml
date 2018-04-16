@@ -8,22 +8,40 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView_ownerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_ownername"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textView_ownerBloodType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview_bloodtype"
+        android:textSize="18sp"/>
+
     <Button
         android:id="@+id/button_emergencyHistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_emergencyHistory" />
+        android:text="@string/button_emergencyHistory"
+        android:textSize="18sp"/>
     <Button
         android:id="@+id/button_sendEmergency"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorThemeRed1"
         android:text="@string/button_sendEmergency"
-        android:textColor="@color/colorThemeRed2" />
+        android:textSize="18sp"
+        android:textColor="@color/colorThemeRed2"/>
     <Button
         android:id="@+id/button_contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="18sp"
         android:text="@string/button_contacts" />
 
 </LinearLayout>
