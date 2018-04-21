@@ -6,22 +6,9 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/textview_contacts_priority"
-        android:layout_width="40dp"
-        android:layout_height= "match_parent"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/circle"
-        android:textStyle="bold"
-        android:textColor="@color/colorThemeRed2"
-        android:gravity="center"
-        android:fontFamily="monospace"
-        android:textSize="16sp"/>
-
-    <TextView
         android:id="@+id/textview_contacts_name"
         android:layout_width="200dp"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:textStyle="bold"
         android:gravity="center|start"

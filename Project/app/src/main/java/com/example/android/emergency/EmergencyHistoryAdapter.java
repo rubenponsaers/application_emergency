@@ -51,7 +51,6 @@ public class EmergencyHistoryAdapter extends RecyclerView.Adapter<EmergencyHisto
         holder.dateTextView.setText(date);
         holder.locationTextView.setText(location);
         holder.itemView.setTag(id);
-        //TODO(4) !!!!!Adapter eerst afwerken
 
     }
 

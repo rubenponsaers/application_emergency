@@ -105,7 +105,7 @@ public class ContactsActivity extends AppCompatActivity {
                 null,
                 null,
                 null,
-                ContactsContract.ContactsEntry.COLUMN_PRIORITY
+                ContactsContract.ContactsEntry._ID
         );
     }
 
@@ -139,7 +139,6 @@ public class ContactsActivity extends AppCompatActivity {
     public long addNewContact(int priority, String name,Long number){
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(ContactsContract.ContactsEntry.COLUMN_PRIORITY, priority);
         contentValues.put(ContactsContract.ContactsEntry.COLUMN_NAME,name);
         contentValues.put(ContactsContract.ContactsEntry.COLUMN_NUMBER,number);
 

@@ -42,14 +42,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
             return;
         }
 
-        int priority = mCursor.getInt(mCursor.getColumnIndex(ContactsContract.ContactsEntry.COLUMN_PRIORITY));
         String name = mCursor.getString(mCursor.getColumnIndex(ContactsContract.ContactsEntry.COLUMN_NAME));
         long number = mCursor.getLong(mCursor.getColumnIndex(ContactsContract.ContactsEntry.COLUMN_NUMBER));
         long id = mCursor.getLong(mCursor.getColumnIndex(ContactsContract.ContactsEntry._ID));
 
-        holder.priorityTextView.setText(String.valueOf(priority));
         holder.nameTextView.setText(name);
-        holder.numberTextView.setText(String.valueOf(number));
+        holder.numberTextView.setText("+32" + String.valueOf(number));
         holder.itemView.setTag(id);
     }
 
@@ -74,7 +72,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
 
         public ContactsViewHolder(View itemView){
             super(itemView);
-            priorityTextView = (TextView) itemView.findViewById(R.id.textview_contacts_priority);
             nameTextView = (TextView) itemView.findViewById(R.id.textview_contacts_name);
             numberTextView = (TextView) itemView.findViewById(R.id.textview_contacts_number);
         }

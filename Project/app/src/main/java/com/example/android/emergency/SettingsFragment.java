@@ -15,7 +15,7 @@ import android.support.v7.preference.PreferenceScreen;
 public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+    public void onCreatePreferences(Bundle bundle, String rootKey) {
         addPreferencesFromResource(R.xml.pref_visualizer);
 
         SharedPreferences sharedPreferences = getPreferenceScreen().getSharedPreferences();
@@ -33,7 +33,6 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     //Geeft een korte summary van de gekozen preference
     private void setPreferenceSummary(Preference preference, Object value) {
         String stringValue = value.toString();
-        String key = preference.getKey();
 
         if (preference instanceof ListPreference){
             ListPreference listPreference = (ListPreference) preference;

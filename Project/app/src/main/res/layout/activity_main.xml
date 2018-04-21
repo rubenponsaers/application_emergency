@@ -6,21 +6,22 @@
     android:layout_height="match_parent"
     android:background="@color/colorThemeRed2"
     android:orientation="vertical"
+    android:padding="5dp"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView_ownerName"
+        android:id="@+id/textView_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/textview_ownername"
+        android:text="@string/pref_username"
         android:textSize="30sp"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/textView_ownerBloodType"
+        android:id="@+id/textView_userBloodType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/textview_bloodtype"
+        android:text="@string/pref_bloodtype"
         android:textSize="18sp"/>
 
     <Button

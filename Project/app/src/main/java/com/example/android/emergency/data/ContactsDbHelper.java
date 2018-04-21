@@ -22,7 +22,6 @@ public class ContactsDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         final String SQL_CREATE_CONTACTS_TABLE = "CREATE TABLE " + ContactsEntry.TABLE_NAME + " (" +
                 ContactsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                ContactsEntry.COLUMN_PRIORITY + " INTEGER NOT NULL, " +
                 ContactsEntry.COLUMN_NAME + " TEXT NOT NULL," +
                 ContactsEntry.COLUMN_NUMBER + " INTEGER NOT NULL" +
                 "); ";
