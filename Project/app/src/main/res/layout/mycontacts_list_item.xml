@@ -7,13 +7,14 @@
 
     <TextView
         android:id="@+id/textview_contacts_name"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
         android:layout_marginRight="5dp"
         android:textStyle="bold"
         android:gravity="center|start"
         android:fontFamily="monospace"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@color/colorThemeRedText1"/>
 
     <TextView
         android:id="@+id/textview_contacts_number"
@@ -21,5 +22,6 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"
         android:gravity="center|start"
-        android:textSize="14sp" />
+        android:textSize="16sp"
+        android:textColor="@color/colorThemeRedText1"/>
 </LinearLayout>

@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Emergency</string>
-    <string name="button_emergencyHistory">Emergency history</string>
+    <string name="button_emergencies">Previous emergencies</string>
     <string name="button_sendEmergency">Send emergency!</string>
+    <string name="button_contacts">My contacts</string>
     <string name="action_settings">Settings</string>
-    <string name="button_contacts">Priority contacts</string>
+    <string name="action_clearHistory">Clear history</string>
     <string name="hint_new_contact_priority">Nr</string>
     <string name="hint_new_contact_name">Name</string>
     <string name="hint_new_contact_phoneNumber">Phone number</string>
@@ -11,7 +12,6 @@
     <string name="button_existing_contact_add">+</string>
 
     <!-- Preference labels and key names -->
-
     <string name="pref_theme_label">Theme</string>
     <string name="pref_theme_key" translatable="false">theme</string>
     <string name="pref_theme_Red_label">Red</string>
@@ -24,7 +24,6 @@
     <string name="pref_bloodtype_label">Bloodtype</string>
     <string name="pref_bloodtype_key" translatable="false">bloodtype</string>
     <string name="pref_bloodtype">BLOODTYPE</string>
-    <string name="action_clearHistory">Clear history</string>
-
+    <string name="button_stopEmergency">Everything is OK</string>
 
 </resources>

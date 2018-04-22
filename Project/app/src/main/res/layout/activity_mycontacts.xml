@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -15,7 +14,7 @@
             android:id="@+id/editText_new_contact_name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="top"
+            android:layout_gravity="top|center"
             android:hint="@string/hint_new_contact_name" />
 
         <EditText
@@ -42,13 +41,12 @@
             android:layout_gravity="bottom|end"
             android:layout_marginEnd="50dp"
             android:gravity="center"
-            android:onClick="addToContacts"
             android:text="@string/button_new_contact_add"
             android:textSize="15sp" />
     </FrameLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView_contacts"
+        android:id="@+id/recyclerView_mycontacts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="5dp" />

@@ -11,7 +11,8 @@ public class EmergenciesContract {
     public static final class EmergenciesEntry implements BaseColumns {
         public static final String TABLE_NAME = "emergencies";
         public static final String COLUMN_DATE = "date";
-        public static final String COLUMN_LAT = "latitude";
-        public static final String COLUMN_LON = "longtitude";
+        public static final String COLUMN_TIME = "time";
+        public static final String COLUMN_LATITUDE = "latitude";
+        public static final String COLUMN_LONGTITUDE = "longtitude";
     }
 }

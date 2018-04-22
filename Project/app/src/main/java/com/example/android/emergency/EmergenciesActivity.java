@@ -15,21 +15,18 @@ import android.view.MenuItem;
 import com.example.android.emergency.data.EmergenciesContract;
 import com.example.android.emergency.data.EmergenciesDBHelper;
 
-public class EmergencyHistoryActivity extends AppCompatActivity {
+public class EmergenciesActivity extends AppCompatActivity {
 
-    private EmergencyHistoryAdapter mAdapter;
-    private RecyclerView mEmergencyList;
-    private SQLiteDatabase mDb;
-    private final static String TAG = EmergencyHistoryActivity.class.getSimpleName();
-
+    private EmergenciesAdapter emergenciesAdapter;
+    private EmergenciesDBHelper dbHelper;
+    private RecyclerView emergenciesList;
+    private SQLiteDatabase sqLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emergencyhistory);
-
+        setContentView(R.layout.activity_emergencies);
         ActionBar actionBar = this.getSupportActionBar();
-
         if (actionBar != null){
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -41,34 +38,6 @@ public class EmergencyHistoryActivity extends AppCompatActivity {
         initDatabase();
     }
 
-    private void initDatabase(){
-        mEmergencyList = (RecyclerView) findViewById(R.id.recyclerView_emergencies);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        mEmergencyList.setLayoutManager(layoutManager);
-        mEmergencyList.setHasFixedSize(true);
-
-        EmergenciesDBHelper dbHelper = new EmergenciesDBHelper(this);
-        mDb = dbHelper.getWritableDatabase();
-        Cursor cursor = getAllEmergencies();
-        mAdapter = new EmergencyHistoryAdapter(this,cursor);
-        mEmergencyList.setAdapter(mAdapter);
-    }
-
-    private Cursor getAllEmergencies() {
-        return mDb.query(
-                EmergenciesContract.EmergenciesEntry.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                EmergenciesContract.EmergenciesEntry._ID
-        );
-    }
-
-    //MENU
-    //----------------------------------------------------------------------------------------------
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main, menu);
@@ -86,8 +55,8 @@ public class EmergencyHistoryActivity extends AppCompatActivity {
             NavUtils.navigateUpFromSameTask(this);
         }
         if(id==R.id.action_settings){
-            Intent startSettingsAvtivity = new Intent(this,SettingsActivity.class);
-            startActivity(startSettingsAvtivity);
+            Intent settingsAvtivity = new Intent(this,SettingsActivity.class);
+            startActivity(settingsAvtivity);
             return true;
         }
         if (id==R.id.action_clearHistory){
@@ -95,4 +64,32 @@ public class EmergencyHistoryActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void initDatabase(){
+        emergenciesList = (RecyclerView) findViewById(R.id.recyclerView_emergencies);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        emergenciesList.setLayoutManager(layoutManager);
+        emergenciesList.setHasFixedSize(true);
+
+        dbHelper = new EmergenciesDBHelper(this);
+        sqLiteDatabase = dbHelper.getWritableDatabase();
+        emergenciesAdapter = new EmergenciesAdapter(this, showAll());
+        emergenciesList.setAdapter(emergenciesAdapter);
+    }
+
+    private Cursor showAll() {
+        return sqLiteDatabase.query(
+                EmergenciesContract.EmergenciesEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                EmergenciesContract.EmergenciesEntry._ID
+        );
+    }
+
+
+
 }

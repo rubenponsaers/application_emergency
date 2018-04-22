@@ -13,37 +13,59 @@
         android:id="@+id/textView_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:text="@string/pref_username"
-        android:textSize="30sp"
+        android:textColor="@color/colorThemeRedText1"
+        android:textSize="32sp"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textView_userBloodType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:text="@string/pref_bloodtype"
-        android:textSize="18sp"/>
+        android:textColor="@color/colorThemeRed1"
+        android:textSize="20sp"/>
 
     <Button
-        android:id="@+id/button_emergencyHistory"
+        android:id="@+id/button_emergencies"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/button_emergencyHistory"
-        android:textSize="18sp"/>
+        android:layout_height="60dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/button_emergencies"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/button_mycontacts"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:text="@string/button_contacts" />
     <Button
         android:id="@+id/button_sendEmergency"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="@color/colorThemeRed1"
         android:text="@string/button_sendEmergency"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="@color/colorThemeRed2"/>
+
     <Button
-        android:id="@+id/button_contacts"
+        android:id="@+id/button_stopEmergency"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="@string/button_contacts" />
+        android:layout_height="60dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:backgroundTint="@color/colorThemeRedstopEmergency"
+        android:textColor="@color/colorThemeRed2"
+        android:text="@string/button_stopEmergency"/>
 
 </LinearLayout>
 

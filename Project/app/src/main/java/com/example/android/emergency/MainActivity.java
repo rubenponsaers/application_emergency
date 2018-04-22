@@ -2,7 +2,6 @@ package com.example.android.emergency;
 
 import android.Manifest;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -17,6 +16,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,47 +26,63 @@ import android.widget.Toast;
 
 import com.example.android.emergency.data.EmergenciesContract;
 import com.example.android.emergency.data.EmergenciesDBHelper;
+import com.example.android.emergency.data.MyContactsDBHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private Button emergencyHistory;
+    private final static String TAG = EmergenciesActivity.class.getSimpleName();
+    private Button emergencies;
     private Button sendEmergency;
-    private Button contacts;
+    private Button myContacts;
+    private Button stopEmergency;
     private TextView userName;
     private TextView userBloodType;
     private LocationManager locationManager;
     private LocationListener locationListener;
-    private SQLiteDatabase mDb;
-    private final static String TAG = EmergencyHistoryActivity.class.getSimpleName();
+    private SQLiteDatabase sqLiteDatabaseWrite;
+    private SQLiteDatabase sqLiteDatabaseRead;
+    private EmergenciesDBHelper dbHelperWrite;
+    private MyContactsDBHelper dbHelperRead;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EmergenciesDBHelper dbHelper = new EmergenciesDBHelper(this);
-        mDb = dbHelper.getWritableDatabase();
+        dbHelperWrite = new EmergenciesDBHelper(this);
+        sqLiteDatabaseWrite = dbHelperWrite.getWritableDatabase();
+        dbHelperRead = new MyContactsDBHelper(this);
+        sqLiteDatabaseRead = dbHelperWrite.getReadableDatabase();
+        //TODO(3) Haal de contacten uit de lijst van contacten en verstuur een nood sms
 
-        emergencyHistory = (Button) findViewById(R.id.button_emergencyHistory);
+        emergencies = (Button) findViewById(R.id.button_emergencies);
         sendEmergency = (Button) findViewById(R.id.button_sendEmergency);
-        contacts = (Button) findViewById(R.id.button_contacts);
+        myContacts = (Button) findViewById(R.id.button_mycontacts);
         userName = (TextView) findViewById(R.id.textView_userName);
         userBloodType = (TextView) findViewById(R.id.textView_userBloodType);
+        stopEmergency = (Button) findViewById(R.id.button_stopEmergency);
 
         setupSharedPreferences();
         setupLocationService();
 
+
         //Button actions
-        emergencyHistory.setOnClickListener(new View.OnClickListener() {
+        emergencies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = MainActivity.this;
-                Class destinationActivity = EmergencyHistoryActivity.class;
-                Intent startActivity = new Intent(context, destinationActivity);
-                startActivity(startActivity);
+                Intent emergenciesActivity = new Intent(MainActivity.this, EmergenciesActivity.class);
+                startActivity(emergenciesActivity);
+            }
+        });
+        myContacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myContactsActivity = new Intent(MainActivity.this, MyContactsActivity.class);
+                startActivity(myContactsActivity);
             }
         });
         sendEmergency.setOnClickListener(new View.OnClickListener() {
@@ -75,15 +91,33 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
                 configureEmergency();
             }
         });
-        contacts.setOnClickListener(new View.OnClickListener() {
+        stopEmergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context context = MainActivity.this;
-                Class destinationActivity = PriorityContactsActivity.class;
-                Intent startActivity = new Intent(context, destinationActivity);
-                startActivity(startActivity);
+                locationManager.removeUpdates(locationListener);
+                Toast messageToast = Toast.makeText(MainActivity.this, "Emergency stopted!", Toast.LENGTH_SHORT);
+                messageToast.show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem settings = menu.findItem(R.id.action_settings);
+        settings.setVisible(true);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings){
+            Intent settingsActivity = new Intent(this, SettingsActivity.class);
+            startActivity(settingsActivity);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupLocationService() {
@@ -93,17 +127,12 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             public void onLocationChanged(Location location) {
                 addNewEmergency(location);
             }
-
             @Override
             public void onStatusChanged(String s, int i, Bundle bundle) {
-
             }
-
             @Override
             public void onProviderEnabled(String s) {
-
             }
-
             @Override
             public void onProviderDisabled(String s) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
@@ -136,7 +165,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     }
 
     private void configureEmergency() {
-        locationManager.requestLocationUpdates("gps", 1000, 0, locationListener);
+        locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
+        //TODO(2) Andere providers implementeren
     }
 
     private void setupSharedPreferences(){
@@ -145,51 +175,32 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         loadInfoFromSharedPreferences(sharedPreferences);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
-    }
-
     public long addNewEmergency(Location location){
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        String date = simpleDateFormat.format(calendar.getTime());
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat simpleTime = new SimpleDateFormat("HH:mm");
+        String date = simpleDate.format(calendar.getTime());
+        String time = simpleTime.format(calendar.getTime());
 
         double lat = location.getLatitude();
         double lon = location.getLongitude();
 
+        sendSMS(date,time,lat,lon);
+
         ContentValues contentValues = new ContentValues();
+            contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_DATE,date);
+            contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_TIME, time);
+            contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_LATITUDE, lat);
+            contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_LONGTITUDE, lon);
 
-        contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_DATE,date);
-        contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_LAT, lat);
-        contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_LON, lon);
-        locationManager.removeUpdates(locationListener);
-        Context context = MainActivity.this;
-        Toast messageToast = Toast.makeText(context, "Message send", Toast.LENGTH_SHORT);
+        Toast messageToast = Toast.makeText(MainActivity.this, "Sending emergency!", Toast.LENGTH_SHORT);
         messageToast.show();
-        return mDb.insert(EmergenciesContract.EmergenciesEntry.TABLE_NAME,null,contentValues);
+
+        return sqLiteDatabaseWrite.insert(EmergenciesContract.EmergenciesEntry.TABLE_NAME,null,contentValues);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem settings = menu.findItem(R.id.action_settings);
-        settings.setVisible(true);
-        return true;
-    }
+    private void sendSMS(String date, String time, double latitude, double longtitude){
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings){
-            Intent startSettingsActivity = new Intent(this, SettingsActivity.class);
-            startActivity(startSettingsActivity);
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -199,6 +210,13 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
     private void loadInfoFromSharedPreferences(SharedPreferences sharedPreferences){
         userName.setText(sharedPreferences.getString(getString(R.string.pref_username_key),getString(R.string.pref_username)));
-        userBloodType.setText(sharedPreferences.getString(getString(R.string.pref_bloodtype_key),getString(R.string.pref_bloodtype)));
+        userBloodType.setText("Bloodtype: " + sharedPreferences.getString(getString(R.string.pref_bloodtype_key),getString(R.string.pref_bloodtype)));
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+    }
+
 }
