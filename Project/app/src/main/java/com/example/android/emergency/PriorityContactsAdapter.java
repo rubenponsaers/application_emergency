@@ -9,25 +9,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.android.emergency.data.ContactsContract;
+import com.example.android.emergency.data.PriorityContactsContract;
 
 /**
  * Created by Ruben on 2/04/2018.
  */
 
-public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder> {
+public class PriorityContactsAdapter extends RecyclerView.Adapter<PriorityContactsAdapter.ContactsViewHolder> {
     private Cursor mCursor;
-    private static final String TAG = ContactsAdapter.class.getSimpleName();
+    private static final String TAG = PriorityContactsAdapter.class.getSimpleName();
     private Context mContext;
 
-    public ContactsAdapter(Context context,Cursor cursor){
+    public PriorityContactsAdapter(Context context, Cursor cursor){
         this.mContext = context;
         this.mCursor = cursor;
     }
 
     @Override
     public ContactsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int layoutForListItem = R.layout.contacts_list_item;
+        int layoutForListItem = R.layout.prioritycontacts_list_item;
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(layoutForListItem,parent,false);
         ContactsViewHolder viewHolder = new ContactsViewHolder(view);
@@ -42,9 +42,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
             return;
         }
 
-        String name = mCursor.getString(mCursor.getColumnIndex(ContactsContract.ContactsEntry.COLUMN_NAME));
-        long number = mCursor.getLong(mCursor.getColumnIndex(ContactsContract.ContactsEntry.COLUMN_NUMBER));
-        long id = mCursor.getLong(mCursor.getColumnIndex(ContactsContract.ContactsEntry._ID));
+        String name = mCursor.getString(mCursor.getColumnIndex(PriorityContactsContract.ContactsEntry.COLUMN_NAME));
+        long number = mCursor.getLong(mCursor.getColumnIndex(PriorityContactsContract.ContactsEntry.COLUMN_NUMBER));
+        long id = mCursor.getLong(mCursor.getColumnIndex(PriorityContactsContract.ContactsEntry._ID));
 
         holder.nameTextView.setText(name);
         holder.numberTextView.setText("+32" + String.valueOf(number));
@@ -68,7 +68,6 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
     class ContactsViewHolder extends RecyclerView.ViewHolder{
         TextView nameTextView;
         TextView numberTextView;
-        TextView priorityTextView;
 
         public ContactsViewHolder(View itemView){
             super(itemView);

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:orientation="horizontal"
     android:padding="10dp">
 
     <TextView
@@ -10,16 +9,26 @@
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:layout_marginRight="10dp"
-        android:gravity="center"
+        android:layout_gravity="start"
+        android:gravity="center|start"
         android:fontFamily="monospace"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/textview_emergencyhistory_location"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/textview_emergencyhistory_latitude"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
         android:layout_marginLeft="10dp"
+        android:layout_gravity="end|top"
         android:gravity="center|start"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
+    <TextView
+        android:id="@+id/textview_emergencyhistory_longtitude"
+        android:layout_width="250dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="end|bottom"
+        android:gravity="center|start"
+        android:textSize="12sp" />
 
-</LinearLayout>
+</FrameLayout>

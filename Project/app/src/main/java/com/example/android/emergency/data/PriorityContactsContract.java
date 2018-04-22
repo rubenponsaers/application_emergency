@@ -6,7 +6,7 @@ import android.provider.BaseColumns;
  * Created by Ruben on 2/04/2018.
  */
 
-public class ContactsContract {
+public class PriorityContactsContract {
 
     public static final class ContactsEntry implements BaseColumns{
         public static final String TABLE_NAME = "emergencyContacts";

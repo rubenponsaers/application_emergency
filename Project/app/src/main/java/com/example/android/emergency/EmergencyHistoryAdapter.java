@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.android.emergency.data.ContactsContract;
-import com.example.android.emergency.data.EmergencyHistoryContract;
+import com.example.android.emergency.data.EmergenciesContract;
 
 /**
  * Created by Ruben on 7/03/2018.
@@ -44,12 +43,14 @@ public class EmergencyHistoryAdapter extends RecyclerView.Adapter<EmergencyHisto
             return;
         }
 
-        String date = mCursor.getString(mCursor.getColumnIndex(EmergencyHistoryContract.EmergencyHistoryEntry.COLUMN_DATE));
-        String location = mCursor.getString(mCursor.getColumnIndex(EmergencyHistoryContract.EmergencyHistoryEntry.COLUMN_LOCATION));
-        long id = mCursor.getLong(mCursor.getColumnIndex(EmergencyHistoryContract.EmergencyHistoryEntry._ID));
+        String date = mCursor.getString(mCursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_DATE));
+        Double latitude = mCursor.getDouble(mCursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_LAT));
+        Double longtitude = mCursor.getDouble(mCursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_LON));
+        long id = mCursor.getLong(mCursor.getColumnIndex(EmergenciesContract.EmergenciesEntry._ID));
 
         holder.dateTextView.setText(date);
-        holder.locationTextView.setText(location);
+        holder.latitudeTextView.setText("Latitude: " + String.valueOf(latitude));
+        holder.longtitudeTextView.setText("Longtitude:" + String.valueOf(longtitude));
         holder.itemView.setTag(id);
 
     }
@@ -69,14 +70,16 @@ public class EmergencyHistoryAdapter extends RecyclerView.Adapter<EmergencyHisto
      */
     class EmergencyHistoryViewHolder extends RecyclerView.ViewHolder{
         TextView dateTextView;
-        TextView locationTextView;
+        TextView latitudeTextView;
+        TextView longtitudeTextView;
 
 
         public EmergencyHistoryViewHolder(View itemView){
             super(itemView);
 
             dateTextView = (TextView) itemView.findViewById(R.id.textview_emergencyhistory_date);
-            locationTextView = (TextView) itemView.findViewById(R.id.textview_emergencyhistory_location);
+            latitudeTextView = (TextView) itemView.findViewById(R.id.textview_emergencyhistory_latitude);
+            longtitudeTextView = (TextView) itemView.findViewById(R.id.textview_emergencyhistory_longtitude);
         }
     }
 }

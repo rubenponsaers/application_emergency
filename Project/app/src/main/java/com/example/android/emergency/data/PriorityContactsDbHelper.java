@@ -3,18 +3,18 @@ package com.example.android.emergency.data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.example.android.emergency.data.ContactsContract.*;
+import com.example.android.emergency.data.PriorityContactsContract.*;
 
 /**
  * Created by Ruben on 2/04/2018.
  */
 
-public class ContactsDbHelper extends SQLiteOpenHelper {
+public class PriorityContactsDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "contacts.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
-    public ContactsDbHelper(Context context){
+    public PriorityContactsDbHelper(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 

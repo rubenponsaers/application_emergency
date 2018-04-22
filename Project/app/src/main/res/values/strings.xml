@@ -24,8 +24,7 @@
     <string name="pref_bloodtype_label">Bloodtype</string>
     <string name="pref_bloodtype_key" translatable="false">bloodtype</string>
     <string name="pref_bloodtype">BLOODTYPE</string>
-
-
+    <string name="action_clearHistory">Clear history</string>
 
 
 </resources>
