@@ -1,2 +1,12 @@
-Meer preferences toevoegen
-Bij de theme preference een summary geven van welk thema momenteel gebruikt wordt
+EXTRA: Meer preferences toevoegen Adres,...
+EXTRA: Bij de theme preference een summary geven van welk thema momenteel gebruikt wordt
+EXTRA: sms versturen
+Wanneer scherm gedraaid wordt zorg ervoor dat gegevens niet verloren gegaan + zorg voor scrollview bij mainactivity
+EXTRA: Google API voor geschiedenis van Emergencies
+Aangeven dat locatie opgehaald wordt
+JSON ophalen - lesson 2 (Connect to the internet)
+Push to GitHub
+
+Examen (Multiple Choise):
+- Wat is een activity
+- Wat is het verschil tussen een Loader en een Service

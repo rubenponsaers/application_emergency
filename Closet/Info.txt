@@ -1,16 +1,5 @@
 Eigenschappen:
 --------------------------------------------------------
-HOOFDSCHERM:
-- Rode knop: stuurt bericht naar favoriete personen met locatie gegevens en Help!
-- Groene knop: stuurt bericht dat alles oke is
-- Oranje knop: stuurt bericht met locatiegegevens naar een persoon om een bepaald tijdsinterval
-	- Iets wat toont dat je locatie vastegelegd wordt
-	- Wanneer is je locatie voor het laatst vastgelegd
-- Favoriete contacten
-- naam,adres
-
-
-
 App voor jong en oud die gebruikt wordt in noodgevallen.
 
 Voor recyclerview te implementeren kan er:

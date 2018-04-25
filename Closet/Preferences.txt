@@ -1,5 +1,3 @@
 Theme: Dark,Red
-Language: English,Dutch
-Contacts: Mom,Dad,Jake,Lillie
 Amount of messages sent when emergency button is pressed
-Interval time between send messages
+Interval time between send messages aanpassen (5s, 10s, 30s, 1min)

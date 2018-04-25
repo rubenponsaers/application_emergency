@@ -3,7 +3,11 @@
     <color name="colorThemeRed1">#c90000</color>
     <color name="colorThemeRedText1">#454545</color>
     <color name="colorThemeRed2">#ffffff</color>
-    <color name="colorThemeRedstopEmergency">#165e00</color>
+    <color name="colorThemeRedButton1">#d2d2d2</color>
+    <color name="colorThemRedsendEmergencyVisible">#c90000</color>
+    <color name="colorThemRedsendEmergencyInvisible">#86c90000</color>
+    <color name="colorThemeRedstopEmergencyVisible">#165e00</color>
+    <color name="colorThemeRedstopEmergencyInvisible">#78165e00</color>
     <color name="colorThemeDark1">#000000</color>
 
 

@@ -43,9 +43,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private LocationManager locationManager;
     private LocationListener locationListener;
     private SQLiteDatabase sqLiteDatabaseWrite;
-    private SQLiteDatabase sqLiteDatabaseRead;
     private EmergenciesDBHelper dbHelperWrite;
-    private MyContactsDBHelper dbHelperRead;
 
 
     @Override
@@ -55,8 +53,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         dbHelperWrite = new EmergenciesDBHelper(this);
         sqLiteDatabaseWrite = dbHelperWrite.getWritableDatabase();
-        dbHelperRead = new MyContactsDBHelper(this);
-        sqLiteDatabaseRead = dbHelperWrite.getReadableDatabase();
         //TODO(3) Haal de contacten uit de lijst van contacten en verstuur een nood sms
 
         emergencies = (Button) findViewById(R.id.button_emergencies);
@@ -95,6 +91,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
             @Override
             public void onClick(View view) {
                 locationManager.removeUpdates(locationListener);
+                sendEmergency.setBackgroundColor(getResources().getColor(R.color.colorThemRedsendEmergencyVisible));
+                stopEmergency.setBackgroundColor(getResources().getColor(R.color.colorThemeRedstopEmergencyInvisible));
                 Toast messageToast = Toast.makeText(MainActivity.this, "Emergency stopted!", Toast.LENGTH_SHORT);
                 messageToast.show();
             }
@@ -166,7 +164,9 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
     private void configureEmergency() {
         locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
-        //TODO(2) Andere providers implementeren
+        sendEmergency.setBackgroundColor(getResources().getColor(R.color.colorThemRedsendEmergencyInvisible));
+        stopEmergency.setBackgroundColor(getResources().getColor(R.color.colorThemeRedstopEmergencyVisible));
+        //TODO(2) Andere providers implementeren + API voor google maps
     }
 
     private void setupSharedPreferences(){

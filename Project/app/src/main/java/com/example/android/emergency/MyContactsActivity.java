@@ -153,6 +153,7 @@ public class MyContactsActivity extends AppCompatActivity {
 
     //add new contact
     public void addToContacts(){
+
         if(newContactNumber.getText().length()==0|| newContactName.getText().length()==0){
             Toast messageToast = Toast.makeText(MyContactsActivity.this, "Please, fill in everything!", Toast.LENGTH_SHORT);
             messageToast.show();

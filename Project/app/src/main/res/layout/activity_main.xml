@@ -13,7 +13,6 @@
         android:id="@+id/textView_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
         android:text="@string/pref_username"
         android:textColor="@color/colorThemeRedText1"
         android:textSize="32sp"
@@ -23,7 +22,6 @@
         android:id="@+id/textView_userBloodType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
         android:text="@string/pref_bloodtype"
         android:textColor="@color/colorThemeRed1"
         android:textSize="20sp"/>
@@ -34,6 +32,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
+        android:background="@color/colorThemeRedButton1"
         android:text="@string/button_emergencies"
         android:textSize="20sp"/>
 
@@ -43,6 +42,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
+        android:background="@color/colorThemeRedButton1"
         android:textSize="20sp"
         android:text="@string/button_contacts" />
     <Button
@@ -51,7 +51,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
-        android:backgroundTint="@color/colorThemeRed1"
+        android:background="@color/colorThemeRed1"
         android:text="@string/button_sendEmergency"
         android:textSize="20sp"
         android:textColor="@color/colorThemeRed2"/>
@@ -63,7 +63,7 @@
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
         android:textSize="20sp"
-        android:backgroundTint="@color/colorThemeRedstopEmergency"
+        android:background="@color/colorThemeRedstopEmergencyVisible"
         android:textColor="@color/colorThemeRed2"
         android:text="@string/button_stopEmergency"/>
 

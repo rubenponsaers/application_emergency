@@ -60,7 +60,8 @@ public class EmergenciesActivity extends AppCompatActivity {
             return true;
         }
         if (id==R.id.action_clearHistory){
-            //TODO(1) remove all items from database
+            sqLiteDatabase.execSQL("delete from " + EmergenciesContract.EmergenciesEntry.TABLE_NAME);
+            initDatabase();
         }
         return super.onOptionsItemSelected(item);
     }
