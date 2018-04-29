@@ -67,6 +67,23 @@
         android:textColor="@color/colorThemeRed2"
         android:text="@string/button_stopEmergency"/>
 
+    <TextView
+        android:id="@+id/textview_doctor_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:hint="@string/hint_doctor"/>
+
+    <TextView
+        android:id="@+id/textview_doctor_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="24sp"
+        android:hint="@string/hint_result_doctor"/>
+
 </LinearLayout>
 
 

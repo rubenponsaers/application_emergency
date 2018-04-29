@@ -10,6 +10,9 @@
     <string name="hint_new_contact_phoneNumber">Phone number</string>
     <string name="button_new_contact_add">OK</string>
     <string name="button_existing_contact_add">+</string>
+    <string name="button_stopEmergency">Everything is OK</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="hint_result_doctor">Result</string>
 
     <!-- Preference labels and key names -->
     <string name="pref_theme_label">Theme</string>
@@ -24,7 +27,7 @@
     <string name="pref_bloodtype_label">Bloodtype</string>
     <string name="pref_bloodtype_key" translatable="false">bloodtype</string>
     <string name="pref_bloodtype">BLOODTYPE</string>
-    <string name="button_stopEmergency">Everything is OK</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="hint_doctor">Doctor on duty in city ...</string>
+
 
 </resources>

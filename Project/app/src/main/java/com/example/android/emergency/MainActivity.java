@@ -16,7 +16,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,8 +25,11 @@ import android.widget.Toast;
 
 import com.example.android.emergency.data.EmergenciesContract;
 import com.example.android.emergency.data.EmergenciesDBHelper;
-import com.example.android.emergency.data.MyContactsDBHelper;
+import com.example.android.emergency.data.NetworkUtils;
+import com.example.android.emergency.data.fetchData;
 
+import java.io.IOException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     private Button stopEmergency;
     private TextView userName;
     private TextView userBloodType;
+    public static TextView doctorResult;
+    private TextView doctorInCity;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private SQLiteDatabase sqLiteDatabaseWrite;
@@ -61,9 +65,12 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         userName = (TextView) findViewById(R.id.textView_userName);
         userBloodType = (TextView) findViewById(R.id.textView_userBloodType);
         stopEmergency = (Button) findViewById(R.id.button_stopEmergency);
+        doctorInCity = (TextView) findViewById(R.id.textview_doctor_city);
+        doctorResult = (TextView) findViewById(R.id.textview_doctor_result);
 
         setupSharedPreferences();
         setupLocationService();
+        loadDoctorQuery();
 
 
         //Button actions
@@ -173,6 +180,14 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
         loadInfoFromSharedPreferences(sharedPreferences);
+    }
+
+    private void loadDoctorQuery(){
+        String city = "Tongeren";
+        URL githubSearchUrl = NetworkUtils.buildUrl(city);
+        doctorInCity.setText("Doctor on duty in " + city + ":");
+
+        new fetchData().execute(githubSearchUrl);
     }
 
     public long addNewEmergency(Location location){
