@@ -15,11 +15,17 @@
         android:singleLine="true"
         android:title="@string/pref_bloodtype_label"/>
 
-    <ListPreference
-        android:defaultValue="@string/pref_theme_Red_key"
-        android:key="@string/pref_theme_key"
-        android:title="@string/pref_theme_label"
-        android:entries="@array/pref_theme_option_labels"
-        android:entryValues="@array/pref_theme_option_values"/>
+    <EditTextPreference
+        android:defaultValue="@string/pref_city"
+        android:inputType="text"
+        android:key="@string/pref_city_key"
+        android:singleLine="true"
+        android:title="@string/pref_city_label"/>
 
+    <ListPreference
+        android:defaultValue="@string/pref_delay"
+        android:key="@string/pref_delay_key"
+        android:title="@string/pref_delay_label"
+        android:entries="@array/pref_delay_option_labels"
+        android:entryValues="@array/pref_delay_option_values"/>
 </PreferenceScreen>

@@ -50,14 +50,15 @@ public class EmergenciesAdapter extends RecyclerView.Adapter<EmergenciesAdapter.
         String time = cursor.getString(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_TIME));
         Double latitude = cursor.getDouble(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_LATITUDE));
         Double longtitude = cursor.getDouble(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_LONGTITUDE));
+        String address = cursor.getString(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_ADDRESS));
         long id = cursor.getLong(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry._ID));
 
         holder.date.setText(date);
         holder.time.setText(time);
-        holder.latitude.setText("Latitude: " + String.valueOf(new DecimalFormat("##.####").format(latitude)));
-        holder.longtitude.setText("Longtitude:" + String.valueOf(new DecimalFormat("##.####").format(longtitude)));
+        holder.latitude.setText("Lat: " + String.valueOf(new DecimalFormat("##.##").format(latitude)));
+        holder.longtitude.setText("Long: " + String.valueOf(new DecimalFormat("##.##").format(longtitude)));
+        holder.address.setText(address);
         holder.itemView.setTag(id);
-
     }
 
     @Override
@@ -70,11 +71,13 @@ public class EmergenciesAdapter extends RecyclerView.Adapter<EmergenciesAdapter.
         TextView latitude;
         TextView longtitude;
         TextView time;
+        TextView address;
 
 
         public EmergenciesViewHolder(View itemView){
             super(itemView);
 
+            address = (TextView) itemView.findViewById(R.id.textview_emergencies_address);
             date = (TextView) itemView.findViewById(R.id.textview_emergencies_date);
             time = (TextView) itemView.findViewById(R.id.textview_emergencies_time);
             latitude = (TextView) itemView.findViewById(R.id.textview_emergencies_latitude);

@@ -90,7 +90,4 @@ public class EmergenciesActivity extends AppCompatActivity {
                 EmergenciesContract.EmergenciesEntry._ID
         );
     }
-
-
-
 }

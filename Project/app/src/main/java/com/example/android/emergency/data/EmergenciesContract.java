@@ -14,5 +14,6 @@ public class EmergenciesContract {
         public static final String COLUMN_TIME = "time";
         public static final String COLUMN_LATITUDE = "latitude";
         public static final String COLUMN_LONGTITUDE = "longtitude";
+        public static final String COLUMN_ADDRESS = "address";
     }
 }

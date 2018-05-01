@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="pref_theme_option_labels">
-        <item>@string/pref_theme_Red_label</item>
-        <item>@string/pref_theme_Dark_label</item>
+    <array name="pref_delay_option_labels">
+        <item>@string/pref_delay_5s_label</item>
+        <item>@string/pref_delay_20s_label</item>
+        <item>@string/pref_delay_1m_label</item>
     </array>
 
-    <array name="pref_theme_option_values">
-        <item>@string/pref_theme_Red_key</item>
-        <item>@string/pref_theme_Dark_key</item>
+    <array name="pref_delay_option_values">
+        <item>@string/pref_delay_5s_key</item>
+        <item>@string/pref_delay_20s_key</item>
+        <item>@string/pref_delay_1m_key</item>
     </array>
 </resources>

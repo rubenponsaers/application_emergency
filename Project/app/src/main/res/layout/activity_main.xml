@@ -1,89 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#000000"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorThemeRed2"
-    android:orientation="vertical"
-    android:padding="5dp"
+    android:fillViewport="true"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView_userName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pref_username"
-        android:textColor="@color/colorThemeRedText1"
-        android:textSize="32sp"
-        android:textStyle="bold"/>
+        android:background="@color/colorThemeRed2"
+        android:orientation="vertical"
+        android:padding="5dp">
 
-    <TextView
-        android:id="@+id/textView_userBloodType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/pref_bloodtype"
-        android:textColor="@color/colorThemeRed1"
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/textView_userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pref_username"
+            android:textColor="@color/colorThemeRedText1"
+            android:textSize="32sp"
+            android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/button_emergencies"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@color/colorThemeRedButton1"
-        android:text="@string/button_emergencies"
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/textView_userBloodType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pref_bloodtype"
+            android:textColor="@color/colorThemeRed1"
+            android:textSize="20sp"/>
 
-    <Button
-        android:id="@+id/button_mycontacts"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@color/colorThemeRedButton1"
-        android:textSize="20sp"
-        android:text="@string/button_contacts" />
-    <Button
-        android:id="@+id/button_sendEmergency"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:background="@color/colorThemeRed1"
-        android:text="@string/button_sendEmergency"
-        android:textSize="20sp"
-        android:textColor="@color/colorThemeRed2"/>
+        <Button
+            android:id="@+id/button_emergencies"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorThemeRedButton1"
+            android:text="@string/button_emergencies"
+            android:textSize="20sp"/>
 
-    <Button
-        android:id="@+id/button_stopEmergency"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:textSize="20sp"
-        android:background="@color/colorThemeRedstopEmergencyVisible"
-        android:textColor="@color/colorThemeRed2"
-        android:text="@string/button_stopEmergency"/>
+        <Button
+            android:id="@+id/button_mycontacts"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorThemeRedButton1"
+            android:textSize="20sp"
+            android:text="@string/button_contacts" />
+        <Button
+            android:id="@+id/button_sendEmergency"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorThemeRed1"
+            android:text="@string/button_sendEmergency"
+            android:textSize="20sp"
+            android:textColor="@color/colorThemeRed2"/>
 
-    <TextView
-        android:id="@+id/textview_doctor_city"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:hint="@string/hint_doctor"/>
+        <Button
+            android:id="@+id/button_stopEmergency"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:background="@color/colorThemeRedstopEmergencyVisible"
+            android:textColor="@color/colorThemeRed2"
+            android:text="@string/button_stopEmergency"/>
 
-    <TextView
-        android:id="@+id/textview_doctor_result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textSize="24sp"
-        android:hint="@string/hint_result_doctor"/>
+        <TextView
+            android:id="@+id/textview_doctor_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:hint="@string/hint_doctor"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textview_doctor_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="24sp"
+            android:hint="@string/hint_result_doctor"/>
+        <ProgressBar
+            android:id="@+id/loading_indicator"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:visibility="invisible"/>
+    </LinearLayout>
+</ScrollView>
+
 
 

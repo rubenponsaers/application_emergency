@@ -27,26 +27,14 @@
         <activity
             android:name=".EmergenciesActivity"
             android:label="@string/button_emergencies"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/action_settings"></activity>
+            android:label="@string/action_settings" />
         <activity
             android:name=".MyContactsActivity"
             android:label="@string/button_contacts"
-            android:parentActivityName=".MainActivity"></activity>
-        <!--
-             The API key for Google Maps-based APIs is defined as a string resource.
-             (See the file "res/values/google_maps_api.xml").
-             Note that the API key is linked to the encryption key used to sign the APK.
-             You need a different API key for each encryption key, including the release key that is used to
-             sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
-        -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

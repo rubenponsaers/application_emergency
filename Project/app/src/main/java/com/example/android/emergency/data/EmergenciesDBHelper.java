@@ -13,7 +13,7 @@ import com.example.android.emergency.data.EmergenciesContract.EmergenciesEntry;
 public class EmergenciesDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "emergencies.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 7;
 
     public EmergenciesDBHelper(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
@@ -26,7 +26,8 @@ public class EmergenciesDBHelper extends SQLiteOpenHelper {
                 EmergenciesEntry.COLUMN_DATE + " TEXT NOT NULL, " +
                 EmergenciesEntry.COLUMN_TIME + " TEXT NOT NULL," +
                 EmergenciesEntry.COLUMN_LATITUDE + " DOUBLE NOT NULL," +
-                EmergenciesEntry.COLUMN_LONGTITUDE + " DOUBLE NOT NULL" +
+                EmergenciesEntry.COLUMN_LONGTITUDE + " DOUBLE NOT NULL," +
+                EmergenciesEntry.COLUMN_ADDRESS + " TEXT NOT NULL" +
                 "); ";
         sqLiteDatabase.execSQL(SQL_CREATE_EMERGENCIES_TABLE);
     }

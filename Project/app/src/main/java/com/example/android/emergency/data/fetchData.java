@@ -1,6 +1,7 @@
 package com.example.android.emergency.data;
 
 import android.os.AsyncTask;
+import android.view.View;
 
 import com.example.android.emergency.MainActivity;
 import com.example.android.emergency.R;
@@ -29,9 +30,9 @@ public class fetchData extends AsyncTask<URL,Void,String> {
             JSONArray jsonArray = new JSONArray(githubSearchResults);
             for(int i = 0; i < jsonArray.length(); i++){
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-                if(jsonObject.get("city").toString().equals("Tongeren")) {
+                if(jsonObject.get("city").toString().equals(MainActivity.prefCity)) {
                     singleOutput = "City: " + jsonObject.get("city") + "\n" +
-                             "Adres: " + jsonObject.get("adres") + "\n" +
+                             "Addres: " + jsonObject.get("adres") + "\n" +
                              "Medical practice: " + jsonObject.get("medical practice") + "\n";
                     allOutput = allOutput + singleOutput;
                 }
@@ -52,7 +53,14 @@ public class fetchData extends AsyncTask<URL,Void,String> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        MainActivity.loadingIndicator.setVisibility(View.VISIBLE);
+    }
+
+    @Override
     protected void onPostExecute(String githubSearchResults) {
+        MainActivity.loadingIndicator.setVisibility(View.INVISIBLE);
         if (githubSearchResults != null && !githubSearchResults.equals("")) {
             MainActivity.doctorResult.setText(githubSearchResults);
         }

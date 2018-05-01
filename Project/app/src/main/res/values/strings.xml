@@ -12,22 +12,28 @@
     <string name="button_existing_contact_add">+</string>
     <string name="button_stopEmergency">Everything is OK</string>
     <string name="title_activity_maps">Map</string>
-    <string name="hint_result_doctor">Result</string>
+    <string name="hint_result_doctor">Choose city in preferences</string>
+    <string name="hint_doctor">Doctor on duty in city ...</string>
 
     <!-- Preference labels and key names -->
-    <string name="pref_theme_label">Theme</string>
-    <string name="pref_theme_key" translatable="false">theme</string>
-    <string name="pref_theme_Red_label">Red</string>
-    <string name="pref_theme_Red_key" translatable="false">red</string>
-    <string name="pref_theme_Dark_label">Dark</string>
-    <string name="pref_theme_Dark_key" translatable="false">dark</string>
+    <string name="pref_delay_label">Delay between messages</string>
+    <string name="pref_delay_key" translatable="false">delay</string>
+    <string name="pref_delay" translatable="false">5sec</string>
+    <string name="pref_delay_5s_label">5 seconds</string>
+    <string name="pref_delay_5s_key" translatable="false">5sec</string>
+    <string name="pref_delay_20s_label">20 seconds</string>
+    <string name="pref_delay_20s_key" translatable="false">20sec</string>
+    <string name="pref_delay_1m_label">1 minute</string>
+    <string name="pref_delay_1m_key" translatable="false">1min</string>
     <string name="pref_username_label">Name</string>
     <string name="pref_username_key" translatable="false">username</string>
     <string name="pref_username">USERNAME</string>
     <string name="pref_bloodtype_label">Bloodtype</string>
     <string name="pref_bloodtype_key" translatable="false">bloodtype</string>
     <string name="pref_bloodtype">BLOODTYPE</string>
-    <string name="hint_doctor">Doctor on duty in city ...</string>
+    <string name="pref_city">CITY</string>
+    <string name="pref_city_key" translatable="false">city</string>
+    <string name="pref_city_label">City for doctor on duty</string>
 
 
 </resources>
