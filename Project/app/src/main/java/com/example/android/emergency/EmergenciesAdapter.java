@@ -22,6 +22,7 @@ public class EmergenciesAdapter extends RecyclerView.Adapter<EmergenciesAdapter.
     private static final String TAG = EmergenciesAdapter.class.getSimpleName();
     private Cursor cursor;
     private Context context;
+    private DecimalFormat df6 = new DecimalFormat(".######");
 
     public EmergenciesAdapter(Context context, Cursor cursor){
         this.context = context;
@@ -49,15 +50,13 @@ public class EmergenciesAdapter extends RecyclerView.Adapter<EmergenciesAdapter.
         String date = cursor.getString(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_DATE));
         String time = cursor.getString(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_TIME));
         Double latitude = cursor.getDouble(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_LATITUDE));
-        Double longtitude = cursor.getDouble(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_LONGTITUDE));
-        String address = cursor.getString(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_ADDRESS));
+        Double longitude = cursor.getDouble(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry.COLUMN_LONGITUDE));
         long id = cursor.getLong(cursor.getColumnIndex(EmergenciesContract.EmergenciesEntry._ID));
 
         holder.date.setText(date);
         holder.time.setText(time);
-        holder.latitude.setText("Lat: " + String.valueOf(new DecimalFormat("##.##").format(latitude)));
-        holder.longtitude.setText("Long: " + String.valueOf(new DecimalFormat("##.##").format(longtitude)));
-        holder.address.setText(address);
+        holder.latitude.setText("Latitude: " + String.valueOf(df6.format(latitude)));
+        holder.longitude.setText("Longitude: " + String.valueOf(df6.format(longitude)));
         holder.itemView.setTag(id);
     }
 
@@ -69,19 +68,17 @@ public class EmergenciesAdapter extends RecyclerView.Adapter<EmergenciesAdapter.
     class EmergenciesViewHolder extends RecyclerView.ViewHolder{
         TextView date;
         TextView latitude;
-        TextView longtitude;
+        TextView longitude;
         TextView time;
-        TextView address;
 
 
         public EmergenciesViewHolder(View itemView){
             super(itemView);
 
-            address = (TextView) itemView.findViewById(R.id.textview_emergencies_address);
             date = (TextView) itemView.findViewById(R.id.textview_emergencies_date);
             time = (TextView) itemView.findViewById(R.id.textview_emergencies_time);
             latitude = (TextView) itemView.findViewById(R.id.textview_emergencies_latitude);
-            longtitude = (TextView) itemView.findViewById(R.id.textview_emergencies_longtitude);
+            longitude = (TextView) itemView.findViewById(R.id.textview_emergencies_longitude);
         }
     }
 }

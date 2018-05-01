@@ -30,7 +30,7 @@ import android.widget.Toast;
 import com.example.android.emergency.data.EmergenciesContract;
 import com.example.android.emergency.data.EmergenciesDBHelper;
 import com.example.android.emergency.data.NetworkUtils;
-import com.example.android.emergency.data.fetchData;
+import com.example.android.emergency.data.fetchDataDoctor;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
                 Log.e(TAG,"Emergencie is already deactivated");
             }
         });
+        setupSharedPreferences();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         loadDoctorQuery();
-        setupSharedPreferences();
     }
 
     @Override
@@ -213,39 +213,31 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
     private void loadDoctorQuery(){
         String city = prefCity;
-        URL githubSearchUrl = NetworkUtils.buildUrl(city);
+        URL githubSearchUrl = NetworkUtils.buildUrlDoctor();
         doctorInCity.setText("Doctor on duty in " + city + ":");
         Log.i(TAG,"Loading doctor on duty information");
-        new fetchData().execute(githubSearchUrl);
+        new fetchDataDoctor().execute(githubSearchUrl);
     }
 
-    public long addNewEmergency(double longtidtude, double latitude){
+    public long addNewEmergency(double longidtude, double latitude){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MM-yyyy");
         SimpleDateFormat simpleTime = new SimpleDateFormat("HH:mm");
         String date = simpleDate.format(calendar.getTime());
         String time = simpleTime.format(calendar.getTime());
-        String toAdress = "Tongeren";//TODO
 
         ContentValues contentValues = new ContentValues();
             contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_DATE,date);
             contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_TIME, time);
             contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_LATITUDE, latitude);
-            contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_LONGTITUDE, longtidtude);
-            contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_ADDRESS,toAdress);
+            contentValues.put(EmergenciesContract.EmergenciesEntry.COLUMN_LONGITUDE, longidtude);
 
         Toast messageToast = Toast.makeText(MainActivity.this, "Sending emergency!", Toast.LENGTH_SHORT);
         messageToast.show();
 
-        sendSMS(date,time,toAdress);
-
         Log.i(TAG,"New emergency added to the database of emergencies");
 
         return sqLiteDatabaseWrite.insert(EmergenciesContract.EmergenciesEntry.TABLE_NAME,null,contentValues);
-    }
-
-    private void sendSMS(String date, String time, String address){
-        //TODO
     }
 
     @Override

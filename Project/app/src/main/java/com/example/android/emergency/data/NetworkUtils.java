@@ -14,16 +14,10 @@ import java.util.Scanner;
  */
 
 public class NetworkUtils {
-    final static String DOCTOR_BASE_URL = "http://www.mocky.io/v2/5ae5d50d2e00006800382521";
-    final static String PARAM_QUERY = "q";
-    final static String PARAM_SORT = "sort";
-    final static String sortBy = "city";
+    final static String DOCTOR_BASE_URL = "http://www.mocky.io/v2/5ae884d42d0000e0047b494d";
 
-    public static URL buildUrl(String city) {
-        Uri builtUri = Uri.parse(DOCTOR_BASE_URL).buildUpon()
-                .appendQueryParameter(PARAM_QUERY, city)
-                .appendQueryParameter(PARAM_SORT, sortBy)
-                .build();
+    public static URL buildUrlDoctor() {
+        Uri builtUri = Uri.parse(DOCTOR_BASE_URL).buildUpon().build();
 
         URL url = null;
         try {

@@ -17,7 +17,7 @@ import java.net.URL;
  * Created by Ruben on 29/04/2018.
  */
 
-public class fetchData extends AsyncTask<URL,Void,String> {
+public class fetchDataDoctor extends AsyncTask<URL,Void,String> {
 
     @Override
     protected String doInBackground(URL... params) {

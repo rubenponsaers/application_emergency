@@ -18,38 +18,28 @@
         android:layout_width="100dp"
         android:layout_height="25dp"
         android:layout_toEndOf="@id/textview_emergencies_date"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:gravity="center|start"
         android:textSize="16sp"
         android:textColor="@color/colorThemeRedText1"/>
 
     <TextView
         android:id="@+id/textview_emergencies_latitude"
-        android:layout_width="100dp"
+        android:layout_width="175dp"
         android:layout_height="25dp"
-        android:layout_toEndOf="@id/textview_emergencies_longtitude"
-        android:layout_alignBottom="@id/textview_emergencies_longtitude"
+        android:layout_toRightOf="@id/textview_emergencies_longitude"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:layout_below="@id/textview_emergencies_date"
         android:gravity="center|start"
         android:textSize="14sp"
         android:textColor="@color/colorThemeRedText1"/>
     <TextView
-        android:id="@+id/textview_emergencies_longtitude"
-        android:layout_width="100dp"
+        android:id="@+id/textview_emergencies_longitude"
+        android:layout_width="175dp"
         android:layout_height="25dp"
         android:layout_below="@id/textview_emergencies_date"
         android:layout_marginTop="10dp"
-        android:gravity="center|start"
-        android:textSize="14sp"
-        android:textColor="@color/colorThemeRedText1"/>
-
-    <TextView
-        android:id="@+id/textview_emergencies_address"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_toEndOf="@+id/textview_emergencies_latitude"
-        android:layout_marginLeft="10dp"
         android:gravity="center|start"
         android:textSize="14sp"
         android:textColor="@color/colorThemeRedText1"/>
